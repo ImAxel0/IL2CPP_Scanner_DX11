@@ -34,7 +34,7 @@ void SearchEngine()
 		}
 		else
 		{
-			Globals::Temp::NameSpaceSearch = "";
+			Globals::Temp::NameSpaceSearch.clear();
 		}
 	}
 
@@ -70,6 +70,10 @@ void SearchEngine()
 	else if (Globals::Gui::GameObjectTypeSearch_Current == 1) // Search all GameObjects
 	{
 		if (!Globals::gotClasses) {
+
+			// Turn off defined namespace when in GameObject multi-search to prevent crashes on FindFields()
+			Globals::Gui::ModuleNamespaceTypeSearch_Current = 0;
+			Globals::Temp::NameSpaceSearch.clear();
 
 			if (Globals::Temp::ModuleNameSearch == "")
 			{
