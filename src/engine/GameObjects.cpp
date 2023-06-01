@@ -68,11 +68,15 @@ void GameObjectsEngine()
 						Globals::m_vClasses.clear();
 
 						// Makes so FindComponents doesn't get invalid children components 
-						IL2CPP::Class::FetchClasses(&Globals::m_vClasses, Globals::Temp::ModuleNameSearch.c_str(), ""); // Only blank namespace components are supported in GameObject multi-search for now
+						IL2CPP::Class::FetchClasses(&Globals::m_vClasses, Globals::Temp::ModuleNameSearch.c_str(), "");
 
 						FindComponents();
 
 						Globals::m_vClasses = classesBackup; // Restore the number of found classes in all namespaces
+
+						FindNamespaces();
+
+						FindAllChildrenComponents();
 					}
 				}
 			}

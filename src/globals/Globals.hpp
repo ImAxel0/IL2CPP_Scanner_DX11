@@ -41,6 +41,9 @@ namespace Globals
 	// Vector of module classes
 	inline std::vector<Unity::il2cppClass*> m_vClasses;
 
+	// Vector of Namespaces
+	inline std::vector<std::string> ClassesNamespaces = {};
+
 	// Vector of properties
 	inline std::vector<Unity::il2cppPropertyInfo*> m_vProperties;
 	inline std::string propertyName;

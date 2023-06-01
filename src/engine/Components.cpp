@@ -58,8 +58,23 @@ void ComponentsEngine()
 							Globals::CurrentComponent = Globals::ChildrenComponents.at(u); // Store the selected component
 							Globals::Gui::right_column = "inside_component";
 
-							FindFields();
-							FindProperties();
+							if (Globals::Gui::GameObjectTypeSearch_Current == 1) // All GameObjects search type
+							{
+								Globals::Gui::ModuleNamespaceTypeSearch_Current = 1; // To use FindFields() and FindProperties() with the current component namespace
+								Globals::Temp::NameSpaceSearch = Globals::CurrentComponent->m_Object.m_pClass->m_pNamespace; // Get namespace of the selected component
+
+								FindFields();
+								FindProperties();
+
+								// Restore
+								Globals::Gui::ModuleNamespaceTypeSearch_Current = 0;
+								Globals::Temp::NameSpaceSearch.clear();
+							}
+							else // Defined GameObject search type
+							{
+								FindFields();
+								FindProperties();
+							}
 						}
 					}
 				}

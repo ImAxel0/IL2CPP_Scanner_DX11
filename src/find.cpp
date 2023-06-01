@@ -178,3 +178,57 @@ void FindChildrenComponents()
 		Globals::Temp::NameSpaceSearch = Globals::Namespace;
 	}
 }
+
+void FindAllChildrenComponents()
+{
+	std::vector<Unity::il2cppClass*> classesBackup = Globals::m_vClasses;
+	std::string NamespaceBackup;
+	Unity::CComponent* tempComponent;
+
+	for (uintptr_t u{}; Globals::ClassesNamespaces.size() > u; ++u)
+	{	
+		std::string tempNamespaceStr = Globals::ClassesNamespaces.at(u);
+
+		IL2CPP::Class::FetchClasses(&Globals::m_vClasses, Globals::Temp::ModuleNameSearch.c_str(), tempNamespaceStr.c_str()); // To search classes (components) in their namespace only
+
+		for (uintptr_t i{}; Globals::m_vClasses.size() > i; ++i)
+		{
+			NamespaceBackup = tempNamespaceStr;
+
+			tempComponent = Globals::GameObject->GetComponentInChildren(tempNamespaceStr.append(".").append(Globals::m_vClasses.at(i)->m_pName).c_str());
+
+			if (tempComponent != nullptr)
+			{
+				Globals::ChildrenComponents.push_back(tempComponent);
+				Globals::ChildrenComponentsName.push_back(tempComponent->m_Object.m_pClass->m_pName);
+			}
+
+			tempNamespaceStr.clear();
+			tempNamespaceStr = NamespaceBackup;
+		}
+	}
+
+	Globals::m_vClasses = classesBackup; 
+}
+
+void FindNamespaces()
+{
+	std::string tempNamespace;
+
+	for (uintptr_t u{}; Globals::m_vClasses.size() > u; ++u)
+	{
+		tempNamespace = Globals::m_vClasses.at(u)->m_pNamespace;
+
+		if (tempNamespace == "\0" /*empty namespace*/)
+		{
+			continue;
+		}
+
+		if (std::find(Globals::ClassesNamespaces.begin(), Globals::ClassesNamespaces.end(), tempNamespace) != Globals::ClassesNamespaces.end()) // Skip if already present
+		{
+			continue;
+		}
+
+		Globals::ClassesNamespaces.push_back(tempNamespace);
+	}
+}

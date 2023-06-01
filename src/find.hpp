@@ -7,4 +7,6 @@ inline void FindComponents();
 inline void FindChildren();
 inline void FindFields();
 inline void FindChildrenComponents();
+inline void FindAllChildrenComponents();
 inline void FindProperties();
+inline void FindNamespaces();
