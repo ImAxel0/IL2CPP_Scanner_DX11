@@ -42,7 +42,7 @@ To show/hide the menu press the insert key
 ### Searching all GameObjects in a specific module
 1. Specify a module name
 2. Search all active GameObjects in the specified module name
-3. Load the selected GameObject components (children components are excluded)
+3. Load the selected GameObject components (children components are included)
 4. Play with the component fields
 
 ### Finding components in namespaces (in children of a gameobject)
