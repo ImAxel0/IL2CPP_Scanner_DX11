@@ -144,51 +144,6 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 			Globals::Gui::style->Colors[ImGuiCol_MenuBarBg] = ImColor(50, 50, 50);
 
 			ImGui::BeginMenuBar();
-			/* Disabled at the moment
-			if (ImGui::SmallButton("Components View"))
-			{
-				Globals::Gui::right_column = "component";
-			}
-			ImGui::SameLine();
-			if (ImGui::SmallButton("Children View"))
-			{
-				Globals::Gui::right_column = "children";
-			}
-			
-			if (Globals::Gui::right_column != "inside_component")
-			{
-				ImGui::SetCursorPosX(800);
-				if (ImGui::SmallButton("Refresh"))
-				{
-					if (Globals::Gui::right_column == "component")
-					{
-						// Cleanup for imminent search
-						Globals::Components.clear();
-						Globals::ChildrenComponents.clear();
-						Globals::ComponentsName.clear();
-						Globals::ChildrenComponentsName.clear();
-
-						if (Globals::Gui::GameObjectTypeSearch_Current == 0) // Defined GameObject
-						{
-							if (Globals::Gui::ModuleNamespaceTypeSearch_Current == 1) // Defined Namespace
-							{
-								FindChildrenComponents();
-							}
-						}
-						else // Default namespace
-						{
-							FindComponents();
-						}
-					}
-
-					if (Globals::Gui::right_column == "children")
-					{
-						Globals::Childs.clear();
-						FindChildren();
-					}
-				}
-			}
-			*/
 			ImGui::EndMenuBar();
 
 			ComponentsEngine(); // Components view
