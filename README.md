@@ -3,6 +3,8 @@
 [![Github All Releases](https://img.shields.io/github/downloads/ImAxel0/IL2CPP_Scanner_DX11/total.svg)]()
 [![Github All Releases](https://img.shields.io/github/v/release/ImAxel0/IL2CPP_Scanner_DX11)]()
 
+### <ins>Project archived because I consider it unstable and ahead of a possible release of a better version in the future</ins>
+
 An in game GUI tool based on [IL2CPP_Resolver](https://github.com/sneakyevil/IL2CPP_Resolver) made to modify il2cpp Unity games.
 
 ![IL2CPP Scanner](https://i.imgur.com/Fi5w9e7.png)
